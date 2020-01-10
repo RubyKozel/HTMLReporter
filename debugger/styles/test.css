@@ -1,0 +1,60 @@
+html {
+    font-family: monospace;
+    background-color: snow;
+}
+
+.head-title {
+    font-size: 50px;
+    text-align-last: center;
+}
+
+.error {
+    color: red;
+}
+
+.pass {
+    color: green;
+}
+
+.info {
+    color: blue;
+}
+
+.plus {
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.suite-title > .plus {
+    font-size: 35px;
+}
+
+.test-title > .plus {
+    font-size: 25px;
+}
+
+.suite-title {
+    height: 65px;
+}
+
+.test-title {
+    height: 65px;
+    margin-left: 50px;
+}
+
+.title {
+    display: inline-block;
+    font-size: 40px;
+}
+
+.test {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.log {
+    font-size: 18px;
+    margin-left: 105px;
+}
