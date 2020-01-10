@@ -16,19 +16,17 @@ debug.formatArgs = function (args) {
   args[0] = this.namespace + ": " + args[0];
 };
 
-const error = namespace => {
+const append = data => fs.appendFileSync(path, data + "\n");
+
+const createLogFunction = (namespace, generatorFunction) => {
   const d = debug(namespace);
-  d.log = text => fs.appendFileSync(path, `${generateErrorDiv(text)}\n`);
+  d.log = text => append(generatorFunction(text));
   return d;
 };
 
-const info = namespace => {
-  const d = debug(namespace);
-  d.log = text => fs.appendFileSync(path, `${generateInfoDiv(text)}\n`);
-  return d;
+module.exports = {
+  error: namespace => createLogFunction(namespace, generateErrorDiv),
+  info: namespace => createLogFunction(namespace, generateInfoDiv),
+  logTitle: text => append(generateSuiteTitleDiv(text)),
+  logTest: text => append(generateTestTitleDiv(text))
 };
-
-const logTitle = text => fs.appendFileSync(path, `${generateSuiteTitleDiv(text)}\n`);
-const logTest = text => fs.appendFileSync(path, `${generateTestTitleDiv(text)}\n`);
-
-module.exports = {error, info, logTitle, logTest};
